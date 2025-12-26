@@ -9,19 +9,28 @@
     </head>
 <body>
     <h1>Let's Learn the Major Triads</h1>
-    <p>A simple place to start is with the C major triad</p>
-    <p>The notes in the C Major triad are C, E and G.</p>
-    <p>What are the notes in the C major triad?</p>
-
-    <div>
-        <p>A</p>
-        <p>B</p>
-        <p>C</p>
-        <p>D</p>
-        <p>E</p>
-        <p>F</p>
-        <p>G</p>
-       </div>
-    <script src="main.js"></script>
+    <!-- Current Triad -->
+        <p class="current-triad" >C Major Triad</p>
+    <!-- Click the Note in the triad form -->
+        <form id="answer-form">
+                <label>
+                <input type="checkbox" name="note" value="A">A</label><br>
+                <label>
+                <input type="checkbox" name="note" value="B">B</label><br>
+                <label>
+                <input type="checkbox" name="note" value="C">C</label><br>
+                <label>
+                <input type="checkbox" name="note" value="D">D</label><br>
+                <label>
+                <input type="checkbox" name="note" value="E">E</label><br>
+                <label>
+                <input type="checkbox" name="note" value="F">F</label><br>
+                <label>
+                <input type="checkbox" name="note" value="G">G</label><br>
+            
+                <button id='submit' type="button">Submit</button>
+            </form>
+    
+  <script src="main.js"></script>
 </body>
 </html>
