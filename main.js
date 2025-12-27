@@ -1,5 +1,7 @@
 import { ChordLibrary } from "./library.js";
 
+const user_feedback = document.getElementById('user_feedback');
+
 const chord_name = document.getElementById('current_h2_triad');
 // press enter after choosing chord tones
 const button = document.getElementById('submit');
@@ -45,14 +47,16 @@ button.addEventListener('click', ()=>{
         user_submitted_values.every(note => active_triad.includes(note));
 
     if (chord_tone_validation) {
-        console.log('correct');
+        user_feedback.innerText = `Correct!  ${activeChord.name} has been added to your completed list!`
         clearCheckedNotes();
         pickRandomChord();
-    } else console.log('try again!');
-    clearCheckedNotes();
-
-
-    console.log(user_submitted_values);
+    } else {
+        console.log('try again!');
+        clearCheckedNotes();
+        user_feedback.innerText = `Try again!  The notes chosen for ${activeChord.name} were incorrect!`
+    } 
+    
+    
 })
 
 
