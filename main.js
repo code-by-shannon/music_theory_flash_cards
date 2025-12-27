@@ -2,7 +2,7 @@
 const button = document.getElementById('submit');
 
 // spelling of the chord tones
-const c_major_triad = ['C', 'E', 'G'];
+const active_triad = [];
 // notes user clicked
 let user_submitted_values = [];
 
@@ -18,8 +18,8 @@ button.addEventListener('click', ()=>{
     // check for equal length between user input and correct answer
     // check for each value matched in both arrays
     const chord_tone_validation = 
-        user_submitted_values.length === c_major_triad.length && 
-        user_submitted_values.every(note => c_major_triad.includes(note));
+        user_submitted_values.length === active_triad.length && 
+        user_submitted_values.every(note => active_triad.includes(note));
 
     if (chord_tone_validation) {
         console.log('correct');
