@@ -8,27 +8,37 @@
     <link rel="stylesheet" href="styles.css">
     </head>
 <body>
-    <h1>Let's Learn the Major Triads</h1>
-    <!-- Current Triad -->
-        <h2 id="current_h2_triad" >Name of Chord</h2>
-    <!-- Click the Note in the triad form -->
-        <form id="answer-form">
-                <label><input type="checkbox" name="note" value="A">A</label><br>
-                <label><input type="checkbox" name="note" value="B">B</label><br>
-                <label><input type="checkbox" name="note" value="C">C</label><br>
-                <label><input type="checkbox" name="note" value="D">D</label><br>
-                <label><input type="checkbox" name="note" value="E">E</label><br>
-                <label><input type="checkbox" name="note" value="F">F</label><br>
-                <label><input type="checkbox" name="note" value="G">G</label><br>
-                <label><input type="checkbox" name="note" value="C#">C#</label><br>
-                <label><input type="checkbox" name="note" value="G#">G#</label><br>
-                <label><input type="checkbox" name="note" value="D#">D#</label><br>
-                <label><input type="checkbox" name="note" value="F#">F#</label><br>
-                <label><input type="checkbox" name="note" value="Bb">Bb</label><br>
-                
-            
-                <button id='submit' type="button">Submit</button>
-            </form>
+<!-- Current Triad and Selection Div-->    
+    <div id="checks_and_submit">
+        <h2>Let's Learn the Major Triads</h1>
+            <!-- Current Triad -->
+                <h2 id="current_h2_triad" >Name of Chord</h2>
+            <!-- Click the Note in the triad form -->
+                <form id="answer-form">
+                        <label><input type="checkbox" name="note" value="A">A</label>
+                        <label><input type="checkbox" name="note" value="B">B</label>
+                        <label><input type="checkbox" name="note" value="C">C</label>
+                        <label><input type="checkbox" name="note" value="D">D</label>
+                        <label><input type="checkbox" name="note" value="E">E</label>
+
+                        <label><input type="checkbox" name="note" value="F">F</label><br>
+                        <label><input type="checkbox" name="note" value="G">G</label>
+                        <label><input type="checkbox" name="note" value="C#">C#</label>
+                        <label><input type="checkbox" name="note" value="G#">G#</label>
+                        <label><input type="checkbox" name="note" value="D#">D#</label>
+                        <label><input type="checkbox" name="note" value="F#">F#</label>
+                        <label><input type="checkbox" name="note" value="Bb">Bb</label><br>
+                        
+                    
+                        <button id='submit' type="button">Submit</button>
+                    </form>
+    </div>
+
+<!-- Results and Tally Div-->
+    <div id="results_and_tally">
+        
+    </div>
+    
     
   <script type = "module" src="main.js"></script>
 </body>

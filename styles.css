@@ -2,3 +2,14 @@ body{
     background-color: rgb(207, 223, 238);
     text-align: center;
 }
+
+#checks_and_submit{
+    border:solid 1px green;
+    width:30%;
+    padding:2rem;
+}
+
+#answer-form label {
+    display: inline-block;
+    margin: 0.75rem;
+}
