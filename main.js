@@ -4,12 +4,25 @@ const chord_name = document.getElementById('current_h2_triad');
 // press enter after choosing chord tones
 const button = document.getElementById('submit');
 
-const randomIndex = Math.floor(Math.random() * ChordLibrary.length);
-const activeChord = ChordLibrary[randomIndex];
-console.log(activeChord);
-chord_name.innerText = activeChord.name;
+let activeChord;
+let active_triad;
 
-const active_triad = activeChord.notes;
+function pickRandomChord() {
+    const randomIndex = Math.floor(Math.random() * ChordLibrary.length);
+    activeChord = ChordLibrary[randomIndex];
+    active_triad = activeChord.notes;
+
+    chord_name.innerText = activeChord.name;
+
+    console.log("New chord:", activeChord);
+}
+
+pickRandomChord();
+
+function clearCheckedNotes() {
+    const checkedBoxes = document.querySelectorAll('input[name="note"]:checked');
+    checkedBoxes.forEach(box => box.checked = false);
+}
 
 console.log(active_triad);
 // notes user clicked
@@ -18,7 +31,7 @@ let user_submitted_values = [];
 
 // click button to submit user choices and check against correct answer
 button.addEventListener('click', ()=>{
-    let user_submitted_values = [];
+    const user_submitted_values = [];
     // grab all the checked boxes
     const checkedBoxes = document.querySelectorAll('input[name="note"]:checked');
     // for each checked box push checked value to user_submitted_values array
@@ -33,7 +46,10 @@ button.addEventListener('click', ()=>{
 
     if (chord_tone_validation) {
         console.log('correct');
+        clearCheckedNotes();
+        pickRandomChord();
     } else console.log('try again!');
+    clearCheckedNotes();
 
 
     console.log(user_submitted_values);
