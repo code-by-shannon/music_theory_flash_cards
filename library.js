@@ -1,4 +1,4 @@
-const ChordLibrary = [
+export const ChordLibrary = [
     {
       name: "E Major",
       notes: ["E", "G#", "B"]
