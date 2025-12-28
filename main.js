@@ -48,7 +48,7 @@ button.addEventListener('click', ()=>{
         user_submitted_values.every(note => active_triad.includes(note));
 
     if (chord_tone_validation) {
-        user_feedback.innerText = `Correct!  ${activeChord.name} has been added to your completed list!`
+        user_feedback.innerText = `🏆 Correct!  ${activeChord.name} has been added to your completed list!`
         addCompletedChord();
         clearCheckedNotes();
         pickRandomChord();
@@ -56,13 +56,13 @@ button.addEventListener('click', ()=>{
     } else {
         console.log('try again!');
         clearCheckedNotes();
-        user_feedback.innerText = `Try again!  The notes chosen for ${activeChord.name} were incorrect!`
+        user_feedback.innerText = `❌ Try again!  The notes chosen for ${activeChord.name} were incorrect!`
     } 
 });
 
 function addCompletedChord(){
     const p = document.createElement('p');
-    p.innerText = `${activeChord.name} completed.`;
+    p.innerText = `✅ ${activeChord.name} completed.`;
     results_and_tally.appendChild(p);
     results_and_tally.style.display = 'block';
 } 
