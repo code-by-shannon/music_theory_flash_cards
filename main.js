@@ -9,15 +9,20 @@ const button = document.getElementById('submit');
 
 let activeChord;
 let active_triad;
+let remaining_chords = [...ChordLibrary];
 
 function pickRandomChord() {
-    const randomIndex = Math.floor(Math.random() * ChordLibrary.length);
-    activeChord = ChordLibrary[randomIndex];
+    if(remaining_chords.length === 0){
+        chord_name.innerText = '🎉 All chords completed!';
+        button.disabled = true;
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining_chords.length);
+    activeChord = remaining_chords[randomIndex];
     active_triad = activeChord.notes;
 
     chord_name.innerText = activeChord.name;
-
-    console.log("New chord:", activeChord);
 }
 
 pickRandomChord();
@@ -27,7 +32,6 @@ function clearCheckedNotes() {
     checkedBoxes.forEach(box => box.checked = false);
 }
 
-console.log(active_triad);
 // notes user clicked
 let user_submitted_values = [];
 
@@ -65,6 +69,11 @@ function addCompletedChord(){
     p.innerText = `✅ ${activeChord.name} completed.`;
     results_and_tally.appendChild(p);
     results_and_tally.style.display = 'block';
+
+    // remove chord from pool
+    remaining_chords = remaining_chords.filter(
+        chord => chord.name !== activeChord.name
+    );
 } 
 
 
