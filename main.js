@@ -9,7 +9,23 @@ const button = document.getElementById('submit');
 
 let activeChord;
 let active_triad;
-let remaining_chords = [...ChordLibrary];
+let remaining_chords;
+
+startRound("major");
+
+function startRound(quality) {
+    remaining_chords = ChordLibrary.filter(
+        chord => chord.quality === quality
+    );
+
+    button.disabled = false;
+    user_feedback.innerText = "";
+    results_and_tally.innerHTML = "";
+    results_and_tally.style.display = "none";
+
+    pickRandomChord();
+}
+
 
 // if array is empty end the session
 function pickRandomChord() {
@@ -75,8 +91,4 @@ function addCompletedChord(){
     remaining_chords = remaining_chords.filter(
         chord => chord.name !== activeChord.name
     );
-} 
-
-
-
-
+};
