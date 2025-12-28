@@ -13,3 +13,9 @@ body{
     display: inline-block;
     margin: 0.75rem;
 }
+
+#results_and_tally{
+    border:solid 1px black;
+    width:25%;
+    display:none;
+}
