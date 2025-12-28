@@ -11,6 +11,7 @@ let activeChord;
 let active_triad;
 let remaining_chords = [...ChordLibrary];
 
+// if array is empty end the session
 function pickRandomChord() {
     if(remaining_chords.length === 0){
         chord_name.innerText = '🎉 All chords completed!';
