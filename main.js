@@ -2,6 +2,7 @@ import { ChordLibrary } from "./library.js";
 
 const user_feedback = document.getElementById('user_feedback');
 const results_and_tally = document.getElementById('results_and_tally');
+const next_round_button = document.getElementById('next_round');
 
 const chord_name = document.getElementById('current_h2_triad');
 // press enter after choosing chord tones
@@ -32,6 +33,7 @@ function pickRandomChord() {
     if(remaining_chords.length === 0){
         chord_name.innerText = '🎉 All chords completed!';
         button.disabled = true;
+        next_round_button.hidden = false;
         return;
     }
 
@@ -41,8 +43,6 @@ function pickRandomChord() {
 
     chord_name.innerText = activeChord.name;
 }
-
-pickRandomChord();
 
 function clearCheckedNotes() {
     const checkedBoxes = document.querySelectorAll('input[name="note"]:checked');
@@ -86,9 +86,15 @@ function addCompletedChord(){
     p.innerText = `✅ ${activeChord.name} completed.`;
     results_and_tally.appendChild(p);
     results_and_tally.style.display = 'block';
+    
 
     // remove chord from pool
     remaining_chords = remaining_chords.filter(
         chord => chord.name !== activeChord.name
     );
 };
+
+next_round_button.addEventListener('click', ()=>{
+    next_round_button.hidden = true;
+    startRound('minor');
+})
