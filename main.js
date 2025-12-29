@@ -1,8 +1,32 @@
 import { ChordLibrary } from "./library.js";
 
+const rounds = [
+    {
+      id: "major",
+      label: "Major Chords",
+      qualities: ["major"],
+      nextLabel: "Start Minor Chords →"
+    },
+    {
+      id: "minor",
+      label: "Minor Chords",
+      qualities: ["minor"],
+      nextLabel: "Start Major + Minor →"
+    },
+    {
+      id: "mixed",
+      label: "Major + Minor",
+      qualities: ["major", "minor"],
+      nextLabel: null // end
+    }
+  ];
+  
+
 const user_feedback = document.getElementById('user_feedback');
 const results_and_tally = document.getElementById('results_and_tally');
 const next_round_button = document.getElementById('next_round');
+const round_select = document.getElementById("round_select");
+
 
 const chord_name = document.getElementById('current_h2_triad');
 // press enter after choosing chord tones
@@ -13,14 +37,19 @@ let active_triad;
 let remaining_chords;
 
 //possible current rounds = major, minor, mixed, done etc.
-let current_round = 'major';
+let current_round;
+let current_round_index = 0;
+let allowed_qualities = [];
 
-startRound("major");
+startRoundByIndex(0);
 
-function startRound(quality) {
-    current_round = quality;
+function startRoundByIndex(index) {
+    const round = rounds[index];
+    current_round_index = index;
+    allowed_qualities = round.qualities;
+
     remaining_chords = ChordLibrary.filter(
-        chord => chord.quality === quality
+        chord => allowed_qualities.includes(chord.quality)
     );
 
     button.disabled = false;
@@ -36,14 +65,13 @@ function pickRandomChord() {
     // end-of-round behavior
     if (remaining_chords.length === 0) {
       button.disabled = true;
+
+      const round = rounds[current_round_index];
+      chord_name.innerText = `🎉 ${round.label} completed!`;
   
-      if (current_round === "major") {
-        chord_name.innerText = "🎉 Major chords completed!";
-        next_round_button.hidden = false; // show the Start Minor button
-      } else if (current_round === "minor") {
-        chord_name.innerText = "🎉 All chords completed!";
-        current_round = "done";
-        next_round_button.hidden = true; // no more rounds
+      if (rounds[current_round_index + 1]) {
+        next_round_button.textContent = rounds[current_round_index + 1].nextLabel;
+        next_round_button.hidden = false;
       }
   
       return; // stop here so we don't try to pick a chord
@@ -105,6 +133,17 @@ function addCompletedChord(){
 };
 
 next_round_button.addEventListener('click', ()=>{
-    next_round_button.hidden = true;
-    startRound('minor');
+    startRoundByIndex(current_round_index + 1);
 })
+
+rounds.forEach((round, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = round.label;
+    round_select.appendChild(option);
+  });
+  
+  round_select.addEventListener("change", e => {
+    startRoundByIndex(Number(e.target.value));
+  });
+  
