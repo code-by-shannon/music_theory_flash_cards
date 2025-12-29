@@ -24,7 +24,6 @@ const rounds = [
 
 const user_feedback = document.getElementById('user_feedback');
 const results_and_tally = document.getElementById('results_and_tally');
-const next_round_button = document.getElementById('next_round');
 const round_select = document.getElementById("round_select");
 
 
@@ -68,11 +67,6 @@ function pickRandomChord() {
 
       const round = rounds[current_round_index];
       chord_name.innerText = `🎉 ${round.label} completed!`;
-  
-      if (rounds[current_round_index + 1]) {
-        next_round_button.textContent = rounds[current_round_index + 1].nextLabel;
-        next_round_button.hidden = false;
-      }
   
       return; // stop here so we don't try to pick a chord
     }
@@ -131,10 +125,6 @@ function addCompletedChord(){
         chord => chord.name !== activeChord.name
     );
 };
-
-next_round_button.addEventListener('click', ()=>{
-    startRoundByIndex(current_round_index + 1);
-})
 
 rounds.forEach((round, index) => {
     const option = document.createElement("option");
