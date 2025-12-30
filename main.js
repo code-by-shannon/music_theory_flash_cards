@@ -5,23 +5,28 @@ const rounds = [
       id: "major",
       label: "Major Chords",
       qualities: ["major"],
-      nextLabel: "Start Minor Chords →"
+      type: ['triad']
     },
     {
       id: "minor",
       label: "Minor Chords",
       qualities: ["minor"],
-      nextLabel: "Start Major + Minor →"
+      type: ['triad']
     },
     {
-      id: "mixed",
+      id: "major_and_minor",
       label: "Major + Minor",
       qualities: ["major", "minor"],
-      nextLabel: null // end
+      type: ['triad']
+    },
+    {
+      id: "minor_pentatonics",
+      label: "Minor Pentatonics",
+      qualities: ["minor"],
+      type: ['scale']
     }
   ];
   
-
 const user_feedback = document.getElementById('user_feedback');
 const results_and_tally = document.getElementById('results_and_tally');
 const round_select = document.getElementById("round_select");
@@ -39,6 +44,7 @@ let remaining_chords;
 let current_round;
 let current_round_index = 0;
 let allowed_qualities = [];
+let allowed_types = [];
 
 startRoundByIndex(0);
 
@@ -47,8 +53,12 @@ function startRoundByIndex(index) {
     current_round_index = index;
     allowed_qualities = round.qualities;
 
+    allowed_types = round.type;
+
     remaining_chords = ChordLibrary.filter(
-        chord => allowed_qualities.includes(chord.quality)
+        chord => 
+        allowed_qualities.includes(chord.quality) &&
+        allowed_types.includes(chord.type)
     );
 
     button.disabled = false;
