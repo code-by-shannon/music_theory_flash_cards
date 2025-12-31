@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Key Signature Trainer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f7f7f7;
+      padding: 2rem;
+    }
+
+    .app {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #current_h2_triad {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    #user_feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #results_and_tally {
+      margin-top: 1.5rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <h1>Key Signature Trainer</h1>
+
+    <h2 id="current_h2_triad">Loading…</h2>
+
+    <!-- Accidentals -->
+    <div class="notes">
+      <label><input type="checkbox" name="note" value="F#"> F♯</label>
+      <label><input type="checkbox" name="note" value="C#"> C♯</label>
+      <label><input type="checkbox" name="note" value="G#"> G♯</label>
+      <label><input type="checkbox" name="note" value="D#"> D♯</label>
+      <label><input type="checkbox" name="note" value="A#"> A♯</label>
+      <label><input type="checkbox" name="note" value="E#"> E♯</label>
+
+      <label><input type="checkbox" name="note" value="Bb"> B♭</label>
+      <label><input type="checkbox" name="note" value="Eb"> E♭</label>
+      <label><input type="checkbox" name="note" value="Ab"> A♭</label>
+      <label><input type="checkbox" name="note" value="Db"> D♭</label>
+      <label><input type="checkbox" name="note" value="Gb"> G♭</label>
+    </div>
+
+    <button id="submit">Submit</button>
+
+    <div id="user_feedback"></div>
+
+    <div id="results_and_tally"></div>
+  </div>
+
+  <!-- Completely separate JS -->
+  <script type="module" src="keySignatureQuiz.js"></script>
+
+</body>
+</html>
