@@ -28,6 +28,16 @@ export const ChordLibrary = [
     {name: "E Minor pentatonic", notes: ["E", "G", "A", "B", "D"],quality: 'minor', type: 'scale'},
     {name: "G Minor pentatonic", notes: ["G", "Bb", "C", "D", "F"],quality: 'minor', type: 'scale'},
     {name: "F# Minor pentatonic", notes: ["F#", "A", "B", "C#", "E"],quality: 'minor', type: 'scale'},
+    // major pentatonics
+    {name: "E major pentatonic", notes: ["E", "F#", "G#", "B", "C#"], quality: "major", type: "scale"},
+    {name: "A major pentatonic", notes: ["A", "B", "C#", "E", "F#"], quality: "major", type: "scale"},
+    {name: "B major pentatonic", notes: ["B", "C#", "D#", "F#", "G#"], quality: "major", type: "scale"},
+    {name: "D major pentatonic", notes: ["D", "E", "F#", "A", "B"], quality: "major", type: "scale"},
+    {name: "G major pentatonic", notes: ["G", "A", "B", "D", "E"], quality: "major", type: "scale"},
+    {name: "C major pentatonic", notes: ["C", "D", "E", "G", "A"], quality: "major", type: "scale"},
+    {name: "F# major pentatonic", notes: ["F#", "G#", "A#", "C#", "D#"], quality: "major", type: "scale"},
+    {name: "F major pentatonic", notes: ["F", "G", "A", "C", "D"], quality: "major", type: "scale"},
+
 ];
 
 export const KeySignatures = [
@@ -45,6 +55,30 @@ export const KeySignatures = [
     { key: "Eb", mode: "major", accidentals: ["Bb", "Eb", "Ab"] },
     { key: "Ab", mode: "major", accidentals: ["Bb", "Eb", "Ab", "Db"] },
     { key: "Db", mode: "major", accidentals: ["Bb", "Eb", "Ab", "Db", "Gb"] }
-  ];
+];
+
+export const basic_mode_spelling = [
+    {mode: 'Ionian', spelling: ['R', '2', '3', '4', '5', '6', '7']},
+    {mode: 'Dorian', spelling: ['R', '2', 'b3', '4', '5', '6', 'b7']},
+    {mode: 'Phrygian', spelling: ['R', 'b2', 'b3', '4', '5', 'b6', 'b7']},
+    {mode: 'Lydian', spelling: ['R', '2', '3', '#4', '5', '6', '7']},
+    {mode: 'Mixolydian', spelling: ['R', '2', '3', '4', '5', '6', 'b7']},
+    {mode: 'Aeolian', spelling: ['R', '2', 'b3', '4', '5', 'b6', 'b7']},
+    {mode: 'Locrian', spelling: ['R', 'b2', 'b3', '4', 'b5', 'b6', 'b7']},
+]
   
+export const KEYS = [
+    { key: "C",  prefer: "sharps" },
+    { key: "G",  prefer: "sharps" },
+    { key: "D",  prefer: "sharps" },
+    { key: "A",  prefer: "sharps" },
+    { key: "E",  prefer: "sharps" },
+    { key: "B",  prefer: "sharps" },
+    { key: "F#", prefer: "sharps" },
+    { key: "C#", prefer: "sharps" },
   
+    { key: "F",  prefer: "flats" },
+    { key: "Bb", prefer: "flats" },
+    { key: "Eb", prefer: "flats" },
+    { key: "Ab", prefer: "flats" }
+]; 

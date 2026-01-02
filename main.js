@@ -24,7 +24,13 @@ const rounds = [
       label: "Minor Pentatonics",
       qualities: ["minor"],
       type: ['scale']
-    }
+    },
+    {
+      id: "major_pentatonics",
+      label: "Major Pentatonics",
+      qualities: ["major"],
+      type: ['scale']
+      }
   ];
   
 const user_feedback = document.getElementById('user_feedback');
@@ -49,11 +55,10 @@ let allowed_types = [];
 startRoundByIndex(0);
 
 function startRoundByIndex(index) {
-    const round = rounds[index];
     current_round_index = index;
-    allowed_qualities = round.qualities;
+    allowed_qualities = rounds[index].qualities;
 
-    allowed_types = round.type;
+    allowed_types = rounds[index].type;
 
     remaining_chords = ChordLibrary.filter(
         chord => 
