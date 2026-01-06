@@ -82,6 +82,7 @@ function pickRandomChord() {
 
       const round = rounds[current_round_index];
       chord_name.innerText = `🎉 ${round.label} completed!`;
+      rainNotes();
   
       return; // stop here so we don't try to pick a chord
     }
@@ -151,4 +152,26 @@ rounds.forEach((round, index) => {
   round_select.addEventListener("change", e => {
     startRoundByIndex(Number(e.target.value));
   });
+
+
+// note falling on completion
+  function rainNotes(count = 20) {
+    const notes = ["🎵", "🎶", "♩", "♪", "♫"];
+  
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement("span");
+      span.classList.add("note");
+      span.innerText = notes[Math.floor(Math.random() * notes.length)];
+  
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.animationDuration = 1 + Math.random() * 1.5 + "s";
+      span.style.fontSize = 18 + Math.random() * 20 + "px";
+  
+      document.body.appendChild(span);
+  
+      // clean up
+      setTimeout(() => span.remove(), 3000);
+    }
+  }
+  
   
